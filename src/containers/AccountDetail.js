@@ -16,23 +16,19 @@ class AccountDetail extends Component {
   }
 }
 
-export default
-
 function mapStateToProps(state) {
+  const userIdx = state.users.findIndex(user => user._id === state.selectedUser);
+  const accountIdx = state.users[userIdx].accounts.findIndex(account => account.id === state.selectedAccount);
   return {
-    user: state.selectedUser,
-    account: state.selectedAccount
+    account: state.users[userIdx].accounts[accountIdx],
+    user: state.users[userIdx]
   };
 }
 
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({
+    selectAccount: selectAccount
+  }, dispatch)
+}
 
-/*
-
-You will need to create a mapDispatchToProps function here and
-return the action creator selectAccount - HINT: see the UserList
-component.
-
-*/
-
-//
-// export default connect(mapStateToProps, mapDispatchToProps)(AccountDetail);
+export default connect(mapStateToProps, mapDispatchToProps)(AccountDetail);
