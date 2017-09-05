@@ -3,7 +3,7 @@ export const ACCOUNT_SELECTED = "ACCOUNT_SELECTED";
 export const WITHDRAW_FUNDS = "WITHDRAW_FUNDS";
 
 export function selectUser(user) {
-  console.log("Selected user ")
+  console.log("Selected user")
   return {
     type: USER_SELECTED,
     payload: user
